@@ -49,17 +49,20 @@ When running RepCalc from the command line, options are given by flags combined 
 
 Options:
 
-    - `-a`,    Choose analysis type WG:  Calculate TE density relative to the entire genome.
-    - `-b`,    Choose analysis type ROI:  Calculate TE density within regions of interest.
-    - `-c`,     Choose analysis type MXROI:  Calculate distribution of TEs within regions of interest.
-    - `-A`,    Columns will be given explicitly for TE data following path to TE data.
-    - `-B`,    Columns will be given explicitly for region of interest data following path to regions of interest data.
-    - `-t`,     Transpose output.  Does not apply unless -c is also selected.
+- `-a`,    Choose analysis type WG:  Calculate TE density relative to the entire genome.
+- `-b`,    Choose analysis type ROI:  Calculate TE density within regions of interest.
+- `-c`,     Choose analysis type MXROI:  Calculate distribution of TEs within regions of interest.
+- `-A`,    Columns will be given explicitly for TE data following path to TE data.
+- `-B`,    Columns will be given explicitly for region of interest data following path to regions of interest data.
+- `-t`,     Transpose output.  Does not apply unless -c is also selected.
 
-- The options `-a`, `-b`, and `-c` specify WG, ROI, and MXROI, respectively.  One and only one must be specified by the user, and using more than one of the three will result in an error.
-- The user may specify that column numbers will be explicitly provided for all 4 variables following the name of a given input file.  The column numbers should be provided as 4 distinct integer values delimited by a single space.  To specify that columns will be provided for transposable element data, use `-A`.  To specify that columns will be provided for regions of interest data, use `-B`.  
-- Neither `-A` nor `-B` is required.  Column numbers default to 0, 1, 2, and 3 for ID, Chromosome, Start, and End, respectively, for either input file.  Since WG utilizes only one data input (for transposable elements), using `-B` and supplying additional columns will produce an error due to the presence of extraneous arguments.
-- To transpose the output given by MXROI, include the option `-t`.  This will cause an error if specified with options `-a` or `-b`.
+The options `-a`, `-b`, and `-c` specify WG, ROI, and MXROI, respectively.  One and only one must be specified by the user, and using more than one of the three will result in an error.
+
+The user may specify that column numbers will be explicitly provided for all 4 variables following the name of a given input file.  The column numbers should be provided as 4 distinct integer values delimited by a single space.  To specify that columns will be provided for transposable element data, use `-A`.  To specify that columns will be provided for regions of interest data, use `-B`.  
+
+Neither `-A` nor `-B` is required.  Column numbers default to 0, 1, 2, and 3 for ID, Chromosome, Start, and End, respectively, for either input file.  Since WG utilizes only one data input (for transposable elements), using `-B` and supplying additional columns will produce an error due to the presence of extraneous arguments.
+
+To transpose the output given by MXROI, include the option `-t`.  This will cause an error if specified with options `-a` or `-b`.
 
 ## Command Line Arguments
 
