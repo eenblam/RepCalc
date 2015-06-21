@@ -1,6 +1,6 @@
 # RepCalc
 
-Authors:  Ben Elam, Tamer Aldwairi, Andy Perkins
+Authors:  Tamer Aldwairi, Ben Elam, Andy Perkins
 
 Contact:  bae53@msstate.edu
 
