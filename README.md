@@ -19,8 +19,8 @@ MXROI:  The third analysis computes TE densities within specific regions of inte
 
 ## Format restrictions of input files
 
--The arrangement of columns is irrelevant, as their positions may be specified in both GUI and command line modes.
--The ”class/subclass” structure used by RepeatMasker for the transposable element ID strings is critical.
+- The arrangement of columns is irrelevant, as their positions may be specified in both GUI and command line modes.
+- The ”class/subclass” structure used by RepeatMasker for the transposable element ID strings is critical.
 
 ## Usage:  Graphical Mode
 
@@ -48,17 +48,17 @@ General form:
 When running RepCalc from the command line, options are given by flags combined in sa single string prefixed by a hyphen, e.g. “-cBt”.  This string must given as the first argument to RepCalc, and including additional option arguments elsewhere will produce an error.  The ordering of the flags themselves is arbitrary.  However, the hyphen should always come prior to the actual flags.
 
 Description
-        -a,    Choose analysis type WG:  Calculate TE density relative to the entire genome.
-        -b,    Choose analysis type ROI:  Calculate TE density within regions of interest.
-        -c,     Choose analysis type MXROI:  Calculate distribution of TEs within regions of interest.
-        -A,    Columns will be given explicitly for TE data following path to TE data.
-        -B,    Columns will be given explicitly for region of interest data following path to regions of interest data.
-        -t,     Transpose output.  Does not apply unless -c is also selected.
+        - -a,    Choose analysis type WG:  Calculate TE density relative to the entire genome.
+        - -b,    Choose analysis type ROI:  Calculate TE density within regions of interest.
+        - -c,     Choose analysis type MXROI:  Calculate distribution of TEs within regions of interest.
+        - -A,    Columns will be given explicitly for TE data following path to TE data.
+        - -B,    Columns will be given explicitly for region of interest data following path to regions of interest data.
+        - -t,     Transpose output.  Does not apply unless -c is also selected.
 
--The options -a, -b, and -c specify WG, ROI, and MXROI, respectively.  One and only one must be specified by the user, and using more than one of the three will result in an error.
--The user may specify that column numbers will be explicitly provided for all 4 variables following the name of a given input file.  The column numbers should be provided as 4 distinct integer values delimited by a single space.  To specify that columns will be provided for transposable element data, use -A.  To specify that columns will be provided for regions of interest data, use -B.  
--Neither -A nor -B is required.  Column numbers default to 0, 1, 2, and 3 for ID, Chromosome, Start, and End, respectively, for either input file.  Since WG utilizes only one data input (for transposable elements), using -B and supplying additional columns will produce an error due to the presence of extraneous arguments.
--To transpose the output given by MXROI, include the option -t.  This will cause an error if specified with option -a or -b.
+- The options -a, -b, and -c specify WG, ROI, and MXROI, respectively.  One and only one must be specified by the user, and using more than one of the three will result in an error.
+- The user may specify that column numbers will be explicitly provided for all 4 variables following the name of a given input file.  The column numbers should be provided as 4 distinct integer values delimited by a single space.  To specify that columns will be provided for transposable element data, use -A.  To specify that columns will be provided for regions of interest data, use -B.  
+- Neither -A nor -B is required.  Column numbers default to 0, 1, 2, and 3 for ID, Chromosome, Start, and End, respectively, for either input file.  Since WG utilizes only one data input (for transposable elements), using -B and supplying additional columns will produce an error due to the presence of extraneous arguments.
+- To transpose the output given by MXROI, include the option -t.  This will cause an error if specified with option -a or -b.
 
 ## Command Line Arguments
 
@@ -73,10 +73,10 @@ The purpose of the configuration (or, “config”) file is to allow the user to
 The primary function of this replacement tool is to allow the user a means of manipulating the IDs of transposable elements so as to influence their inclusion in the calculation of total interspersed repeats in WG and ROI.  It is also useful when performing MXROI on the same data, as this keeps the results from displaying different classes across outputs.
 
 There are only a few basic syntax rules to be concerned with.
--”Match” and “Replacement” patterns may be separated by one of two characters, the colon ( : ) or the equality/assignment operator, ( = ).
--Only one “Match : Replacement” (or “Match=Replacement”) statement may be provided on one line.
--Users may include comments in a config file using the # or ; characters.  Lines beginning with either character will be skipped when the config file is read by RepCalc.
--White space at either end of a string, or about the “/”, is stripped and ignored.  However, including white space within a class or subclass will produce an error.  That is, “Class / Subclass” is legal, but “Class/Sub class” is not.
+- ”Match” and “Replacement” patterns may be separated by one of two characters, the colon ( : ) or the equality/assignment operator, ( = ).
+- Only one “Match : Replacement” (or “Match=Replacement”) statement may be provided on one line.
+- Users may include comments in a config file using the # or ; characters.  Lines beginning with either character will be skipped when the config file is read by RepCalc.
+- White space at either end of a string, or about the “/”, is stripped and ignored.  However, including white space within a class or subclass will produce an error.  That is, “Class / Subclass” is legal, but “Class/Sub class” is not.
 
 Finally, RepCalc accepts the $ and * characters as primitive wildcards.  $ may be used in a pattern to match any class, and * may be used in a pattern to match any subclass.  In the match expression, $ should appear only left of the /, and * should appear only on the right.  In either case, the wildcard will be ignored if not given alone - hence, our description of the wildcard as primitive.  When either wildcard is properly used in a match expression, the user may then include the wildcard in the replacement pattern.  Again, this feature has not been extended to allow for the use of wildcards to match within a class or subclass via regular expressions.  The use of wildcards works only for matching and replacing entire classes or subclasses.[a]  Also note that $ is not treated as a wildcard in the subclass region of a match expression, and * is not treated as a wildcard in the class region of a match expression.
 
