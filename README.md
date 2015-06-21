@@ -1,12 +1,14 @@
 # RepCalc
 
 Authors:  Ben Elam, Tamer Aldwairi, Andy Perkins
+
 Contact:  bae53@msstate.edu
 
 
 ## Platforms
 
 On Windows and Mac, a standard installation of Python 3.4 or higher is required.
+
 On Linux, both Python 3.4 and an additional installation of the Tkinter package are required.
 
 ## Analysis Types
@@ -19,8 +21,9 @@ MXROI:  The third analysis computes TE densities within specific regions of inte
 
 ## Format restrictions of input files
 
-- The arrangement of columns is irrelevant, as their positions may be specified in both GUI and command line modes.
-- The ”class/subclass” structure used by RepeatMasker for the transposable element ID strings is critical.
+The arrangement of columns is irrelevant, as their positions may be specified in both GUI and command line modes.
+
+The ”class/subclass” structure used by RepeatMasker for the transposable element ID strings is critical.
 
 ## Usage:  Graphical Mode
 
@@ -41,6 +44,7 @@ The RepCalc GUI will not be launched if any argument is supplied at the command 
 RepCalc requires a varying number of arguments depending on the desired analysis.  When using the command line, arguments must be supplied in the order given below, from left to right.  Optional fields are indicated by square brackets.
 
 General form:
+
 `./repcalc.py -[abc][ABt] [length] te_data [te_columns] [roi_data] [roi_columns]output_file [config_file]`
 
 ## Command Line Option Flags
@@ -77,6 +81,7 @@ The purpose of the configuration (or, “config”) file is to allow the user to
 The primary function of this replacement tool is to allow the user a means of manipulating the IDs of transposable elements so as to influence their inclusion in the calculation of total interspersed repeats in WG and ROI.  It is also useful when performing MXROI on the same data, as this keeps the results from displaying different classes across outputs.
 
 There are only a few basic syntax rules to be concerned with.
+
 - ”Match” and “Replacement” patterns may be separated by one of two characters, the colon ( : ) or the equality/assignment operator, ( = ).
 - Only one “Match : Replacement” (or “Match=Replacement”) statement may be provided on one line.
 - Users may include comments in a config file using the # or ; characters.  Lines beginning with either character will be skipped when the config file is read by RepCalc.
