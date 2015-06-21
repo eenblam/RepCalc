@@ -11,11 +11,11 @@ On Linux, both Python 3.4 and an additional installation of the Tkinter package 
 
 ## Analysis Types
 
-WG:  This analysis calculates TE density within the whole genome, considering the genome itself as a single region of interest.  At the command line, it is indicated by the -a option flag.  .  Required inputs:  length of genome, transposable element annotation data, and output file path.
+WG:  This analysis calculates TE density within the whole genome, considering the genome itself as a single region of interest.  At the command line, it is indicated by the `-a` option flag. Required inputs:  length of genome, transposable element annotation data, and output file path.
 
-ROI:  The second analysis calculates TE density within an arbitrary number of regions of interest.  At the command line, it is indicated by the -b option flag.  Required inputs:  length of regions of interest, transposable element annotation data, regions of interest data, and output file path.
+ROI:  The second analysis calculates TE density within an arbitrary number of regions of interest.  At the command line, it is indicated by the `-b` option flag.  Required inputs:  length of regions of interest, transposable element annotation data, regions of interest data, and output file path.
 
-MXROI:  The third analysis computes TE densities within specific regions of interest for each class and subclass of TE’s, outputting them as a matrix (TE class and subclass by ROI label.)  At the command line, it is indicated by the -c option flag.  Required inputs:  transposable element annotation data, regions of interest data, and output file path.
+MXROI:  The third analysis computes TE densities within specific regions of interest for each class and subclass of TE’s, outputting them as a matrix (TE class and subclass by ROI label.)  At the command line, it is indicated by the `-c` option flag.  Required inputs:  transposable element annotation data, regions of interest data, and output file path.
 
 ## Format restrictions of input files
 
@@ -41,24 +41,25 @@ The RepCalc GUI will not be launched if any argument is supplied at the command 
 RepCalc requires a varying number of arguments depending on the desired analysis.  When using the command line, arguments must be supplied in the order given below, from left to right.  Optional fields are indicated by square brackets.
 
 General form:
-./repcalc.py -[abc][ABt] [length] te_data [te_columns] [roi_data] [roi_columns]output_file [config_file]
+`./repcalc.py -[abc][ABt] [length] te_data [te_columns] [roi_data] [roi_columns]output_file [config_file]`
 
 ## Command Line Option Flags
 
-When running RepCalc from the command line, options are given by flags combined in sa single string prefixed by a hyphen, e.g. “-cBt”.  This string must given as the first argument to RepCalc, and including additional option arguments elsewhere will produce an error.  The ordering of the flags themselves is arbitrary.  However, the hyphen should always come prior to the actual flags.
+When running RepCalc from the command line, options are given by flags combined in sa single string prefixed by a hyphen, e.g. `-cBt`.  This string must given as the first argument to RepCalc, and including additional option arguments elsewhere will produce an error.  The ordering of the flags themselves is arbitrary.  However, the hyphen should always come prior to the actual flags.
 
-Description
-        - -a,    Choose analysis type WG:  Calculate TE density relative to the entire genome.
-        - -b,    Choose analysis type ROI:  Calculate TE density within regions of interest.
-        - -c,     Choose analysis type MXROI:  Calculate distribution of TEs within regions of interest.
-        - -A,    Columns will be given explicitly for TE data following path to TE data.
-        - -B,    Columns will be given explicitly for region of interest data following path to regions of interest data.
-        - -t,     Transpose output.  Does not apply unless -c is also selected.
+Options:
 
-- The options -a, -b, and -c specify WG, ROI, and MXROI, respectively.  One and only one must be specified by the user, and using more than one of the three will result in an error.
-- The user may specify that column numbers will be explicitly provided for all 4 variables following the name of a given input file.  The column numbers should be provided as 4 distinct integer values delimited by a single space.  To specify that columns will be provided for transposable element data, use -A.  To specify that columns will be provided for regions of interest data, use -B.  
-- Neither -A nor -B is required.  Column numbers default to 0, 1, 2, and 3 for ID, Chromosome, Start, and End, respectively, for either input file.  Since WG utilizes only one data input (for transposable elements), using -B and supplying additional columns will produce an error due to the presence of extraneous arguments.
-- To transpose the output given by MXROI, include the option -t.  This will cause an error if specified with option -a or -b.
+    - `-a`,    Choose analysis type WG:  Calculate TE density relative to the entire genome.
+    - `-b`,    Choose analysis type ROI:  Calculate TE density within regions of interest.
+    - `-c`,     Choose analysis type MXROI:  Calculate distribution of TEs within regions of interest.
+    - `-A`,    Columns will be given explicitly for TE data following path to TE data.
+    - `-B`,    Columns will be given explicitly for region of interest data following path to regions of interest data.
+    - `-t`,     Transpose output.  Does not apply unless -c is also selected.
+
+- The options `-a`, `-b`, and `-c` specify WG, ROI, and MXROI, respectively.  One and only one must be specified by the user, and using more than one of the three will result in an error.
+- The user may specify that column numbers will be explicitly provided for all 4 variables following the name of a given input file.  The column numbers should be provided as 4 distinct integer values delimited by a single space.  To specify that columns will be provided for transposable element data, use `-A`.  To specify that columns will be provided for regions of interest data, use `-B`.  
+- Neither `-A` nor `-B` is required.  Column numbers default to 0, 1, 2, and 3 for ID, Chromosome, Start, and End, respectively, for either input file.  Since WG utilizes only one data input (for transposable elements), using `-B` and supplying additional columns will produce an error due to the presence of extraneous arguments.
+- To transpose the output given by MXROI, include the option `-t`.  This will cause an error if specified with options `-a` or `-b`.
 
 ## Command Line Arguments
 
@@ -78,7 +79,7 @@ There are only a few basic syntax rules to be concerned with.
 - Users may include comments in a config file using the # or ; characters.  Lines beginning with either character will be skipped when the config file is read by RepCalc.
 - White space at either end of a string, or about the “/”, is stripped and ignored.  However, including white space within a class or subclass will produce an error.  That is, “Class / Subclass” is legal, but “Class/Sub class” is not.
 
-Finally, RepCalc accepts the $ and * characters as primitive wildcards.  $ may be used in a pattern to match any class, and * may be used in a pattern to match any subclass.  In the match expression, $ should appear only left of the /, and * should appear only on the right.  In either case, the wildcard will be ignored if not given alone - hence, our description of the wildcard as primitive.  When either wildcard is properly used in a match expression, the user may then include the wildcard in the replacement pattern.  Again, this feature has not been extended to allow for the use of wildcards to match within a class or subclass via regular expressions.  The use of wildcards works only for matching and replacing entire classes or subclasses.[a]  Also note that $ is not treated as a wildcard in the subclass region of a match expression, and * is not treated as a wildcard in the class region of a match expression.
+Finally, RepCalc accepts the $ and * characters as primitive wildcards.  $ may be used in a pattern to match any class, and * may be used in a pattern to match any subclass.  In the match expression, $ should appear only left of the /, and * should appear only on the right.  In either case, the wildcard will be ignored if not given alone - hence our description of the wildcard as primitive.  When either wildcard is properly used in a match expression, the user may then include the wildcard in the replacement pattern.  Again, this feature has not been extended to allow for the use of wildcards to match within a class or subclass via regular expressions.  The use of wildcards works only for matching and replacing entire classes or subclasses.[a]  Also note that $ is not treated as a wildcard in the subclass region of a match expression, and * is not treated as a wildcard in the class region of a match expression.
 
 ## Examples of Config Expressions
 
