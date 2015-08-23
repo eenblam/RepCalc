@@ -75,6 +75,7 @@ To transpose the output given by MXROI, include the option `-t`.  This will caus
 ## Specifying Options Via the Graphical Interface
 
 ## Config File
+**Soon to be deprecated**
 
 The purpose of the configuration (or, “config”) file is to allow the user to specify a class/subclass pattern to be identified and replaced in memory as ID values are obtained from the transposable element data.  RepCalc does not require a config file input - this feature is entirely optional and is intended primarily for users with a basic intuition for pattern matching.  However, this feature is much less robust than the use of regular expressions.  Savvy users will likely find it more convenient to directly edit copies of data files using regular expressions.
 
