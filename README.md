@@ -19,7 +19,7 @@ ROI:  The second analysis calculates TE density within an arbitrary number of re
 
 MXROI:  The third analysis computes TE densities within specific regions of interest for each class and subclass of TE’s, outputting them as a matrix (TE class and subclass by ROI label.)  At the command line, it is indicated by the `-c` option flag.  Required inputs:  transposable element annotation data, regions of interest data, and output file path.
 
-## Format restrictions of input files
+## Format Restrictions of Input Files
 
 The arrangement of columns is irrelevant, as their positions may be specified in both GUI and command line modes.
 
