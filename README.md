@@ -2,7 +2,7 @@
 
 Authors:  Tamer Aldwairi, Ben Elam, Andy Perkins
 
-Contact:  bae53@msstate.edu
+Contact: First use Issues here on GitHub. 
 
 
 ## Platforms
@@ -45,17 +45,17 @@ RepCalc requires a varying number of arguments depending on the desired analysis
 
 General form:
 
-`./repcalc.py -[abc][ABt] [length] te_data [te_columns] [roi_data] [roi_columns]output_file [config_file]`
+`./repcalc.py -[abc][ABt] [length] te_data [te_columns] [roi_data] [roi_columns] output_file [config_file]`
 
 ## Command Line Option Flags
 
-When running RepCalc from the command line, options are given by flags combined in sa single string prefixed by a hyphen, e.g. `-cBt`.  This string must given as the first argument to RepCalc, and including additional option arguments elsewhere will produce an error.  The ordering of the flags themselves is arbitrary.  However, the hyphen should always come prior to the actual flags.
+When running RepCalc from the command line, options are given by flags combined in a single string prefixed by a hyphen, e.g. `-cBt`.  This string must given as the first argument to RepCalc, and including additional option arguments elsewhere will produce an error.  The ordering of the flags themselves is arbitrary.  However, the hyphen should always come prior to the actual flags.
 
 Options:
 
 - `-a`,    Choose analysis type WG:  Calculate TE density relative to the entire genome.
 - `-b`,    Choose analysis type ROI:  Calculate TE density within regions of interest.
-- `-c`,     Choose analysis type MXROI:  Calculate distribution of TEs within regions of interest.
+- `-c`,    Choose analysis type MXROI:  Calculate distribution of TEs within regions of interest.
 - `-A`,    Columns will be given explicitly for TE data following path to TE data.
 - `-B`,    Columns will be given explicitly for region of interest data following path to regions of interest data.
 - `-t`,     Transpose output.  Does not apply unless -c is also selected.
@@ -77,7 +77,7 @@ To transpose the output given by MXROI, include the option `-t`.  This will caus
 ## Config File
 **Soon to be deprecated**
 
-The purpose of the configuration (or, “config”) file is to allow the user to specify a class/subclass pattern to be identified and replaced in memory as ID values are obtained from the transposable element data.  RepCalc does not require a config file input - this feature is entirely optional and is intended primarily for users with a basic intuition for pattern matching.  However, this feature is much less robust than the use of regular expressions.  Savvy users will likely find it more convenient to directly edit copies of data files using regular expressions.
+The purpose of the configuration (or, “config”) file is to allow the user to specify a class/subclass pattern to be identified and replaced in memory as ID values are obtained from the transposable element data.  RepCalc does not require a config file input - this feature is entirely optional and is intended primarily for users with a basic intuition for pattern matching.  However, this feature is much less robust than the use of regular expressions.  Savvy users will likely find it more convenient to directly edit copies of data files using regular expressions. **(a)**
 
 The primary function of this replacement tool is to allow the user a means of manipulating the IDs of transposable elements so as to influence their inclusion in the calculation of total interspersed repeats in WG and ROI.  It is also useful when performing MXROI on the same data, as this keeps the results from displaying different classes across outputs.
 
@@ -89,6 +89,8 @@ There are only a few basic syntax rules to be concerned with.
 - White space at either end of a string, or about the “/”, is stripped and ignored.  However, including white space within a class or subclass will produce an error.  That is, “Class / Subclass” is legal, but “Class/Sub class” is not.
 
 Finally, RepCalc accepts the $ and * characters as primitive wildcards.  $ may be used in a pattern to match any class, and * may be used in a pattern to match any subclass.  In the match expression, $ should appear only left of the /, and * should appear only on the right.  In either case, the wildcard will be ignored if not given alone - hence our description of the wildcard as primitive.  When either wildcard is properly used in a match expression, the user may then include the wildcard in the replacement pattern.  Again, this feature has not been extended to allow for the use of wildcards to match within a class or subclass via regular expressions.  The use of wildcards works only for matching and replacing entire classes or subclasses.[a]  Also note that $ is not treated as a wildcard in the subclass region of a match expression, and * is not treated as a wildcard in the class region of a match expression.
+
+**(a)** With a little time, I could implement this.  However, if the user really wants to use regular expressions, I expect them to be able to write a simpler regex script to parse their own data.  Like I said, we're not trying to reinvent emacs here.
 
 ## Examples of Config Expressions
 
@@ -104,4 +106,3 @@ Finally, RepCalc accepts the $ and * characters as primitive wildcards.  $ may b
 
 “$/*” in the match term would match all classes.  Presently, this match pattern will cause RepCalc to produce an error if found.
 
-[a]With a little time, I could implement this.  However, if the user really wants to use regular expressions, I expect them to be able to write a simpler regex script to parse their own data.  Like I said, we're not trying to reinvent emacs here.
